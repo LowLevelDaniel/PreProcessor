@@ -1,0 +1,14 @@
+#pragma once
+#include "YDebug"
+#include <vector>
+#include <string>
+#include <stdio.h>
+
+static volatile bool G_exit = false;
+
+void SigINT(int) {
+  G_exit = true;
+}
+
+bool parse_comment(FILE *file); // return true on eof
+FILE *proccess_file(FILE *file, const char *ident, const std::vector<char const*>& include_paths); // ident is the output file
